@@ -24,7 +24,26 @@ namespace zh3_AFKFXH
 
         private void JatekosokListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Infok();
+        }
 
+        private void Infok()
+        {
+            //itt lehet saját class + pontért, de nem értem miért lenne értelme listboxban egy érték megjelenítésére egy(esetleg lehet a játékos kora)
+            var jatekos = ((Jateko)JatekosokListBox.SelectedItem).JatekosId;
+            var szül = (from x in context.Jatekos
+                        where x.JatekosId == jatekos
+                        select x.SzuletesiDatum).FirstOrDefault();
+            var mez = (from x in context.Jatekos
+                       where x.JatekosId == jatekos
+                       select x.Mezszam).FirstOrDefault();
+            var poszt = (from x in context.Jatekos
+                         where x.JatekosId == jatekos
+                         select x.Poszt).FirstOrDefault();
+
+            születésidátumTextBox.Text = szül.ToString();
+            mezTextBox.Text = mez.ToString();
+            posztTextBox.Text = poszt.ToString();
         }
 
         private void JatekosokTextBox_TextChanged(object sender, EventArgs e)

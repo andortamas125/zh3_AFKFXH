@@ -160,7 +160,7 @@ namespace zh3_AFKFXH
         }
         private void nézőTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (!CheckNéző(nézőTextBox.Text))
+            if (CheckNéző(nézőTextBox.Text))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(nézőTextBox, "Töltse ki a nézők számát!");

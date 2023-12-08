@@ -29,54 +29,92 @@
         private void InitializeComponent()
         {
             JatekosokListBox = new ListBox();
-            listBox2 = new ListBox();
-            listBox3 = new ListBox();
             JatekosokTextBox = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            születésidátumTextBox = new TextBox();
+            posztTextBox = new TextBox();
+            mezTextBox = new TextBox();
             SuspendLayout();
             // 
             // JatekosokListBox
             // 
             JatekosokListBox.FormattingEnabled = true;
             JatekosokListBox.ItemHeight = 15;
-            JatekosokListBox.Location = new Point(165, 51);
+            JatekosokListBox.Location = new Point(240, 44);
             JatekosokListBox.Name = "JatekosokListBox";
             JatekosokListBox.Size = new Size(159, 484);
             JatekosokListBox.TabIndex = 0;
             JatekosokListBox.SelectedIndexChanged += JatekosokListBox_SelectedIndexChanged;
             // 
-            // listBox2
-            // 
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(342, 51);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(159, 484);
-            listBox2.TabIndex = 1;
-            // 
-            // listBox3
-            // 
-            listBox3.FormattingEnabled = true;
-            listBox3.ItemHeight = 15;
-            listBox3.Location = new Point(535, 51);
-            listBox3.Name = "listBox3";
-            listBox3.Size = new Size(159, 484);
-            listBox3.TabIndex = 2;
-            // 
             // JatekosokTextBox
             // 
-            JatekosokTextBox.Location = new Point(165, 22);
+            JatekosokTextBox.Location = new Point(240, 15);
             JatekosokTextBox.Name = "JatekosokTextBox";
             JatekosokTextBox.Size = new Size(159, 23);
             JatekosokTextBox.TabIndex = 3;
             JatekosokTextBox.TextChanged += JatekosokTextBox_TextChanged;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(441, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Születési dátum:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(441, 122);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Poszt:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(441, 199);
+            label3.Name = "label3";
+            label3.Size = new Size(59, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Mezszám:";
+            // 
+            // születésidátumTextBox
+            // 
+            születésidátumTextBox.Location = new Point(441, 62);
+            születésidátumTextBox.Name = "születésidátumTextBox";
+            születésidátumTextBox.Size = new Size(100, 23);
+            születésidátumTextBox.TabIndex = 7;
+            // 
+            // posztTextBox
+            // 
+            posztTextBox.Location = new Point(441, 140);
+            posztTextBox.Name = "posztTextBox";
+            posztTextBox.Size = new Size(100, 23);
+            posztTextBox.TabIndex = 8;
+            // 
+            // mezTextBox
+            // 
+            mezTextBox.Location = new Point(441, 226);
+            mezTextBox.Name = "mezTextBox";
+            mezTextBox.Size = new Size(100, 23);
+            mezTextBox.TabIndex = 9;
+            // 
             // Jatekosok_uc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(mezTextBox);
+            Controls.Add(posztTextBox);
+            Controls.Add(születésidátumTextBox);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(JatekosokTextBox);
-            Controls.Add(listBox3);
-            Controls.Add(listBox2);
             Controls.Add(JatekosokListBox);
             Name = "Jatekosok_uc";
             Size = new Size(750, 592);
@@ -87,8 +125,12 @@
         #endregion
 
         private ListBox JatekosokListBox;
-        private ListBox listBox2;
-        private ListBox listBox3;
         private TextBox JatekosokTextBox;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private TextBox születésidátumTextBox;
+        private TextBox posztTextBox;
+        private TextBox mezTextBox;
     }
 }

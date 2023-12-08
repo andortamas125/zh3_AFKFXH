@@ -4,7 +4,7 @@ namespace zh3_AFKFXH
 {
     public partial class Form1 : Form
     {
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace zh3_AFKFXH
         private void CsapatokButton_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            Csapatok_uc csapatok_uc = new Csapatok_uc();
+            Excel_uc csapatok_uc = new Excel_uc();
             panel1.Controls.Add(csapatok_uc);
             csapatok_uc.Dock = DockStyle.Fill;
         }

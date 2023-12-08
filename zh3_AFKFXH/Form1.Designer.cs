@@ -62,9 +62,9 @@
             // 
             CsapatokButton.Location = new Point(23, 120);
             CsapatokButton.Name = "CsapatokButton";
-            CsapatokButton.Size = new Size(75, 23);
+            CsapatokButton.Size = new Size(75, 39);
             CsapatokButton.TabIndex = 2;
-            CsapatokButton.Text = "Csapatok";
+            CsapatokButton.Text = "Excel készítés";
             CsapatokButton.UseVisualStyleBackColor = true;
             CsapatokButton.Click += CsapatokButton_Click;
             // 
