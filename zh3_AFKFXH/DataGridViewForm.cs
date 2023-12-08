@@ -90,12 +90,18 @@ namespace zh3_AFKFXH
 
         private void FelvételButton_Click(object sender, EventArgs e)
         {
+            //0-tól kezdi az indexet így ütközik már korábbival :((((
             Mecc új = new Mecc();
             új.Csapat1 = ((Csapat)listBox1.SelectedItem).CsapatId;
             új.Csapat2 = ((Csapat)listBox2.SelectedItem).CsapatId;
             új.Nezoszam = Int32.Parse(nézőTextBox.Text);
             új.Eredmeny = eredményTextBox.Text;
-            context.Meccs.Add(új);  
+
+            új.Nap = null;
+            új.Stadion = null;
+
+
+            context.Meccs.Add(új);
             try
             {
                 context.SaveChanges();
@@ -125,6 +131,28 @@ namespace zh3_AFKFXH
         private void eredményTextBox_Validated(object sender, EventArgs e)
         {
             errorProvider1.SetError(eredményTextBox, "");
+        }
+
+        private void TörlésButton_Click(object sender, EventArgs e)
+        {
+            var ID = ((Mecc)mérkőzésBindingSource.Current).MeccsId;
+
+            var törlendő = (from x in context.Meccs
+                            where x.MeccsId == ID
+                            select x).FirstOrDefault();
+
+            context.Meccs.Remove(törlendő);
+            try
+            {
+
+                //context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.InnerException.Message);
+            }
+            Meccs();
         }
     }
 }

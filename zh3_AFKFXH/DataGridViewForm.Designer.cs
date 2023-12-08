@@ -30,8 +30,14 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            mérkőzésBindingSource = new BindingSource(components);
+            csapat1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            csapat2DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nezoszamDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bevételDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            eredmenyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            napDataGridViewTextBoxColumn = new DataGridViewComboBoxColumn();
             napBindingSource = new BindingSource(components);
+            mérkőzésBindingSource = new BindingSource(components);
             listBox1 = new ListBox();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -44,15 +50,10 @@
             eredményTextBox = new TextBox();
             label5 = new Label();
             errorProvider1 = new ErrorProvider(components);
-            csapat1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            csapat2DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nezoszamDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            bevételDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            eredmenyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            napDataGridViewTextBoxColumn = new DataGridViewComboBoxColumn();
+            TörlésButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)mérkőzésBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)napBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mérkőzésBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -68,13 +69,54 @@
             dataGridView1.Size = new Size(501, 379);
             dataGridView1.TabIndex = 0;
             // 
-            // mérkőzésBindingSource
+            // csapat1DataGridViewTextBoxColumn
             // 
-            mérkőzésBindingSource.DataSource = typeof(Mérkőzés);
+            csapat1DataGridViewTextBoxColumn.DataPropertyName = "Csapat1";
+            csapat1DataGridViewTextBoxColumn.HeaderText = "Csapat1";
+            csapat1DataGridViewTextBoxColumn.Name = "csapat1DataGridViewTextBoxColumn";
+            // 
+            // csapat2DataGridViewTextBoxColumn
+            // 
+            csapat2DataGridViewTextBoxColumn.DataPropertyName = "Csapat2";
+            csapat2DataGridViewTextBoxColumn.HeaderText = "Csapat2";
+            csapat2DataGridViewTextBoxColumn.Name = "csapat2DataGridViewTextBoxColumn";
+            // 
+            // nezoszamDataGridViewTextBoxColumn
+            // 
+            nezoszamDataGridViewTextBoxColumn.DataPropertyName = "Nezoszam";
+            nezoszamDataGridViewTextBoxColumn.HeaderText = "Nezoszam";
+            nezoszamDataGridViewTextBoxColumn.Name = "nezoszamDataGridViewTextBoxColumn";
+            // 
+            // bevételDataGridViewTextBoxColumn
+            // 
+            bevételDataGridViewTextBoxColumn.DataPropertyName = "Bevétel";
+            bevételDataGridViewTextBoxColumn.HeaderText = "Bevétel";
+            bevételDataGridViewTextBoxColumn.Name = "bevételDataGridViewTextBoxColumn";
+            // 
+            // eredmenyDataGridViewTextBoxColumn
+            // 
+            eredmenyDataGridViewTextBoxColumn.DataPropertyName = "Eredmeny";
+            eredmenyDataGridViewTextBoxColumn.HeaderText = "Eredmeny";
+            eredmenyDataGridViewTextBoxColumn.Name = "eredmenyDataGridViewTextBoxColumn";
+            // 
+            // napDataGridViewTextBoxColumn
+            // 
+            napDataGridViewTextBoxColumn.DataPropertyName = "Nap";
+            napDataGridViewTextBoxColumn.DataSource = napBindingSource;
+            napDataGridViewTextBoxColumn.DisplayMember = "Nev";
+            napDataGridViewTextBoxColumn.HeaderText = "Nap";
+            napDataGridViewTextBoxColumn.Name = "napDataGridViewTextBoxColumn";
+            napDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
+            napDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            napDataGridViewTextBoxColumn.ValueMember = "NapId";
             // 
             // napBindingSource
             // 
             napBindingSource.DataSource = typeof(Models.Nap);
+            // 
+            // mérkőzésBindingSource
+            // 
+            mérkőzésBindingSource.DataSource = typeof(Mérkőzés);
             // 
             // listBox1
             // 
@@ -178,52 +220,22 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
-            // csapat1DataGridViewTextBoxColumn
+            // TörlésButton
             // 
-            csapat1DataGridViewTextBoxColumn.DataPropertyName = "Csapat1";
-            csapat1DataGridViewTextBoxColumn.HeaderText = "Csapat1";
-            csapat1DataGridViewTextBoxColumn.Name = "csapat1DataGridViewTextBoxColumn";
-            // 
-            // csapat2DataGridViewTextBoxColumn
-            // 
-            csapat2DataGridViewTextBoxColumn.DataPropertyName = "Csapat2";
-            csapat2DataGridViewTextBoxColumn.HeaderText = "Csapat2";
-            csapat2DataGridViewTextBoxColumn.Name = "csapat2DataGridViewTextBoxColumn";
-            // 
-            // nezoszamDataGridViewTextBoxColumn
-            // 
-            nezoszamDataGridViewTextBoxColumn.DataPropertyName = "Nezoszam";
-            nezoszamDataGridViewTextBoxColumn.HeaderText = "Nezoszam";
-            nezoszamDataGridViewTextBoxColumn.Name = "nezoszamDataGridViewTextBoxColumn";
-            // 
-            // bevételDataGridViewTextBoxColumn
-            // 
-            bevételDataGridViewTextBoxColumn.DataPropertyName = "Bevétel";
-            bevételDataGridViewTextBoxColumn.HeaderText = "Bevétel";
-            bevételDataGridViewTextBoxColumn.Name = "bevételDataGridViewTextBoxColumn";
-            // 
-            // eredmenyDataGridViewTextBoxColumn
-            // 
-            eredmenyDataGridViewTextBoxColumn.DataPropertyName = "Eredmeny";
-            eredmenyDataGridViewTextBoxColumn.HeaderText = "Eredmeny";
-            eredmenyDataGridViewTextBoxColumn.Name = "eredmenyDataGridViewTextBoxColumn";
-            // 
-            // napDataGridViewTextBoxColumn
-            // 
-            napDataGridViewTextBoxColumn.DataPropertyName = "Nap";
-            napDataGridViewTextBoxColumn.DataSource = napBindingSource;
-            napDataGridViewTextBoxColumn.DisplayMember = "Nev";
-            napDataGridViewTextBoxColumn.HeaderText = "Nap";
-            napDataGridViewTextBoxColumn.Name = "napDataGridViewTextBoxColumn";
-            napDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
-            napDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-            napDataGridViewTextBoxColumn.ValueMember = "NapId";
+            TörlésButton.Location = new Point(342, 417);
+            TörlésButton.Name = "TörlésButton";
+            TörlésButton.Size = new Size(44, 28);
+            TörlésButton.TabIndex = 14;
+            TörlésButton.Text = "-";
+            TörlésButton.UseVisualStyleBackColor = true;
+            TörlésButton.Click += TörlésButton_Click;
             // 
             // DataGridViewForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 448);
+            Controls.Add(TörlésButton);
             Controls.Add(eredményTextBox);
             Controls.Add(label5);
             Controls.Add(nézőTextBox);
@@ -239,8 +251,8 @@
             Name = "DataGridViewForm";
             Text = "DataGridViewForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)mérkőzésBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)napBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mérkőzésBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -271,5 +283,6 @@
         private DataGridViewTextBoxColumn bevételDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn eredmenyDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn napDataGridViewTextBoxColumn;
+        private Button TörlésButton;
     }
 }
