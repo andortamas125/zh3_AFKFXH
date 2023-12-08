@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             JátékosokButton = new Button();
-            StadionokButton = new Button();
             CsapatokButton = new Button();
+            ExcelButton = new Button();
             TudnivalókButton = new Button();
             DataGridViewButton = new Button();
             label1 = new Label();
@@ -48,25 +48,25 @@
             JátékosokButton.UseVisualStyleBackColor = true;
             JátékosokButton.Click += JátékosokButton_Click;
             // 
-            // StadionokButton
-            // 
-            StadionokButton.Location = new Point(23, 91);
-            StadionokButton.Name = "StadionokButton";
-            StadionokButton.Size = new Size(75, 23);
-            StadionokButton.TabIndex = 1;
-            StadionokButton.Text = "Stadionok";
-            StadionokButton.UseVisualStyleBackColor = true;
-            StadionokButton.Click += StadionokButton_Click;
-            // 
             // CsapatokButton
             // 
-            CsapatokButton.Location = new Point(23, 120);
+            CsapatokButton.Location = new Point(23, 91);
             CsapatokButton.Name = "CsapatokButton";
-            CsapatokButton.Size = new Size(75, 39);
-            CsapatokButton.TabIndex = 2;
-            CsapatokButton.Text = "Excel készítés";
+            CsapatokButton.Size = new Size(75, 23);
+            CsapatokButton.TabIndex = 1;
+            CsapatokButton.Text = "Csapatok";
             CsapatokButton.UseVisualStyleBackColor = true;
             CsapatokButton.Click += CsapatokButton_Click;
+            // 
+            // ExcelButton
+            // 
+            ExcelButton.Location = new Point(23, 120);
+            ExcelButton.Name = "ExcelButton";
+            ExcelButton.Size = new Size(75, 39);
+            ExcelButton.TabIndex = 2;
+            ExcelButton.Text = "Excel készítés";
+            ExcelButton.UseVisualStyleBackColor = true;
+            ExcelButton.Click += ExcelButton_Click;
             // 
             // TudnivalókButton
             // 
@@ -123,8 +123,8 @@
             Controls.Add(label1);
             Controls.Add(DataGridViewButton);
             Controls.Add(TudnivalókButton);
+            Controls.Add(ExcelButton);
             Controls.Add(CsapatokButton);
-            Controls.Add(StadionokButton);
             Controls.Add(JátékosokButton);
             Controls.Add(panel1);
             Name = "Form1";
@@ -137,8 +137,8 @@
         #endregion
 
         private Button JátékosokButton;
-        private Button StadionokButton;
         private Button CsapatokButton;
+        private Button ExcelButton;
         private Button TudnivalókButton;
         private Button DataGridViewButton;
         private Label label1;

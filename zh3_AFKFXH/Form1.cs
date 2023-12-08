@@ -30,20 +30,19 @@ namespace zh3_AFKFXH
             jatekosok_uc.Dock = DockStyle.Fill;
         }
 
-        private void StadionokButton_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear();
-            Stadionok_uc stadionok_uc = new Stadionok_uc();
-            panel1.Controls.Add(stadionok_uc);
-            stadionok_uc.Dock = DockStyle.Fill;
-        }
-
         private void CsapatokButton_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            Excel_uc csapatok_uc = new Excel_uc();
+            Csapat_uc csapatok_uc = new Csapat_uc();
             panel1.Controls.Add(csapatok_uc);
             csapatok_uc.Dock = DockStyle.Fill;
+        }
+        private void ExcelButton_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            Excel_uc excel_uc = new Excel_uc();
+            panel1.Controls.Add(excel_uc);
+            excel_uc.Dock = DockStyle.Fill;
         }
 
         //Formok
@@ -58,5 +57,7 @@ namespace zh3_AFKFXH
             DataGridViewForm dataGridViewForm = new DataGridViewForm();
             dataGridViewForm.ShowDialog();
         }
+
+
     }
 }
