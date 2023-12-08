@@ -21,7 +21,7 @@ namespace zh3_AFKFXH
                 e.Cancel = true;
             }
         }
-
+        //Panelek (UserControllok)
         private void JátékosokButton_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -46,6 +46,7 @@ namespace zh3_AFKFXH
             csapatok_uc.Dock = DockStyle.Fill;
         }
 
+        //Formok
         private void TudnivalókButton_Click(object sender, EventArgs e)
         {
             TudnivalókForm tudnivalók_Form = new TudnivalókForm();

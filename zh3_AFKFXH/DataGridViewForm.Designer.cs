@@ -174,7 +174,7 @@
             // 
             // FelvételButton
             // 
-            FelvételButton.Location = new Point(287, 417);
+            FelvételButton.Location = new Point(282, 417);
             FelvételButton.Name = "FelvételButton";
             FelvételButton.Size = new Size(49, 28);
             FelvételButton.TabIndex = 9;
@@ -197,6 +197,8 @@
             nézőTextBox.Name = "nézőTextBox";
             nézőTextBox.Size = new Size(100, 23);
             nézőTextBox.TabIndex = 11;
+            nézőTextBox.Validating += nézőTextBox_Validating;
+            nézőTextBox.Validated += nézőTextBox_Validated;
             // 
             // eredményTextBox
             // 
@@ -222,7 +224,7 @@
             // 
             // TörlésButton
             // 
-            TörlésButton.Location = new Point(342, 417);
+            TörlésButton.Location = new Point(337, 417);
             TörlésButton.Name = "TörlésButton";
             TörlésButton.Size = new Size(44, 28);
             TörlésButton.TabIndex = 14;
@@ -275,14 +277,14 @@
         private BindingSource mérkőzésBindingSource1;
         private BindingSource mérkőzésBindingSource2;
         private BindingSource napBindingSource;
-        private BindingSource mérkőzésBindingSource;
         private ErrorProvider errorProvider1;
+        private Button TörlésButton;
+        private BindingSource mérkőzésBindingSource;
         private DataGridViewTextBoxColumn csapat1DataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn csapat2DataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nezoszamDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn bevételDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn eredmenyDataGridViewTextBoxColumn;
         private DataGridViewComboBoxColumn napDataGridViewTextBoxColumn;
-        private Button TörlésButton;
     }
 }

@@ -8,6 +8,7 @@ namespace zh3_AFKFXH
 {
     public class Mérkőzés
     {
+        public int MeccsId { get; set; }
         public string? Csapat1 { get; set; }
 
         public string? Csapat2 { get; set; }
