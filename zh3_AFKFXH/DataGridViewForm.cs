@@ -47,10 +47,6 @@ namespace zh3_AFKFXH
             Meccs();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            Meccs();
-        }
 
         //DataGridView adatfeltöltés
         private void Meccs()
@@ -95,57 +91,62 @@ namespace zh3_AFKFXH
         private void FelvételButton_Click(object sender, EventArgs e)
         {
 
-
-            DialogResult result = MessageBox.Show("Biztosan hozzáadja ezt az adatot?", "Adat felvétel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if (!CheckNéző(nézőTextBox.Text) && CheckEredmény(eredményTextBox.Text))
             {
-                Mecc új = new Mecc();
-                új.MeccsId = context.Meccs.Count();
-                új.Csapat1 = ((Csapat)listBox1.SelectedItem).CsapatId;
-                új.Csapat2 = ((Csapat)listBox2.SelectedItem).CsapatId;
-                új.Nezoszam = Int32.Parse(nézőTextBox.Text);
-                új.Eredmeny = eredményTextBox.Text;
-
-                új.Nap = null;
-                új.Stadion = null;
-
-
-                context.Meccs.Add(új);
-                try
+                DialogResult result = MessageBox.Show("Biztosan hozzáadja ezt az adatot?", "Adat felvétel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+                if (result == DialogResult.Yes)
                 {
-                    context.SaveChanges();
+                    Mecc új = new Mecc();
+                    új.MeccsId = context.Meccs.Count(); // Mert alapból 0-től kezdte így a már meglévőkkel ütközött a PK
+                    új.Csapat1 = ((Csapat)listBox1.SelectedItem).CsapatId;
+                    új.Csapat2 = ((Csapat)listBox2.SelectedItem).CsapatId;
+                    új.Nezoszam = Int32.Parse(nézőTextBox.Text);
+                    új.Eredmeny = eredményTextBox.Text;
+
+                    új.Nap = null;
+                    új.Stadion = null;
+
+
+                    context.Meccs.Add(új);
+                    try
+                    {
+                        context.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.InnerException.Message);
+                    }
+                    Meccs();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.InnerException.Message);
-                }
-                Meccs();
             }
-
         }
 
         //Adatok törlése
         private void TörlésButton_Click(object sender, EventArgs e)
         {
-            var ID = ((Mérkőzés)mérkőzésBindingSource.Current).MeccsId;
+            DialogResult result = MessageBox.Show("Biztosan kitörlöd a kiválasztott elemet?", "Elem törlés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes) { 
 
-            var törlendő = (from x in context.Meccs
-                            where x.MeccsId == ID
-                            select x).FirstOrDefault();
+                var ID = ((Mérkőzés)mérkőzésBindingSource.Current).MeccsId;
 
-            context.Meccs.Remove(törlendő);
-            try
-            {
+                var törlendő = (from x in context.Meccs
+                                where x.MeccsId == ID
+                                select x).FirstOrDefault();
 
-                //context.SaveChanges();
+                context.Meccs.Remove(törlendő);
+                try
+                {
+
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+                Meccs();
             }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.InnerException.Message);
-            }
-            Meccs();
         }
 
         //Validálás egyszerűen (IsNullOrEmpty) és Regexxel

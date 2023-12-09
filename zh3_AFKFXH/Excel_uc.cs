@@ -112,23 +112,37 @@ namespace zh3_AFKFXH
             Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[1];
 
             // Add data to cells of the first worksheet in the new workbook.
-            worksheet.Cells[1, "A"] = "Data Set";
-            worksheet.Cells[1, "B"] = "Value";
-            worksheet.Cells[2, "A"] = "Point 1";
-            worksheet.Cells[2, "B"] = 10;
-            worksheet.Cells[3, "A"] = "Point 2";
-            worksheet.Cells[3, "B"] = 20;
-            worksheet.Cells[4, "A"] = "Point 3";
-            worksheet.Cells[4, "B"] = 30;
-            worksheet.Cells[5, "A"] = "Point 4";
-            worksheet.Cells[5, "B"] = 40;
+            //worksheet.Cells[1, "A"] = "Data Set";
+            //worksheet.Cells[1, "B"] = "Value";
+            //worksheet.Cells[2, "A"] = "Point 1";
+            //worksheet.Cells[2, "B"] = 10;
+            //worksheet.Cells[3, "A"] = "Point 2";
+            //worksheet.Cells[3, "B"] = 20;
+            //worksheet.Cells[4, "A"] = "Point 3";
+            //worksheet.Cells[4, "B"] = 30;
+            //worksheet.Cells[5, "A"] = "Point 4";
+            //worksheet.Cells[5, "B"] = 40;
+
+            var csapatok = from x in context.Csapats
+                           select x.Nev;
+
+            var alapítások = from x in context.Csapats
+                           select x.AlakulasiEv;
+
+            worksheet.Cells[1, "A"] = "Csapat neve";
+            worksheet.Cells[1, "B"] = "Alapulás éve";
+            for (int i = 0; i <  csapatok.ToList().Count; i++)
+            {
+                worksheet.Cells[i + 2, "A"] = csapatok.ToList()[i];
+                worksheet.Cells[i + 2, "B"] = alapítások.ToList()[i];
+            }
 
             // Create a range for the data.
-            Excel.Range chartRange = worksheet.get_Range("A1", "B5");
+            Excel.Range chartRange = worksheet.get_Range("A1", "B9");
 
             // Add a chart to the worksheet.
             Excel.ChartObjects xlCharts = (Excel.ChartObjects)worksheet.ChartObjects(Type.Missing);
-            Excel.ChartObject myChart = xlCharts.Add(10, 80, 300, 250);
+            Excel.ChartObject myChart = xlCharts.Add(10, 150, 300, 250);
             Excel.Chart chartPage = myChart.Chart;
 
             // Set chart range.

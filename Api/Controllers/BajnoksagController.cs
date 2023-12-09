@@ -23,11 +23,11 @@ namespace Api.Controllers
         public IActionResult Getx(int n)
         {
             Zh3Context context = new Zh3Context();
-            var csapatok = from x in context.Csapats
+            var csapat = (from x in context.Csapats
                            where x.CsapatId == n
-                           select x.Nev;
+                           select x.Nev).FirstOrDefault();
 
-            return Ok(csapatok);    
+            return new JsonResult(csapat);    
         }
     }
 }
