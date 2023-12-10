@@ -20,14 +20,35 @@ namespace Api.Controllers
 
         [HttpGet]
         [Route("csapatok/{sorszám}")]
-        public IActionResult Getx(int n)
+        public IActionResult Getx(int sorszám)
         {
             Zh3Context context = new Zh3Context();
             var csapat = (from x in context.Csapats
-                           where x.CsapatId == n
+                           where x.CsapatId == sorszám
                            select x.Nev).FirstOrDefault();
 
             return new JsonResult(csapat);    
+        }
+
+        [HttpPost]
+        [Route("csapatok/all")]
+        public void Post([FromBody] Csapat újCsapat)
+        {
+            Zh3Context context=new Zh3Context();
+            context.Csapats.Add(újCsapat);
+            context.SaveChanges();
+        }
+
+        [HttpDelete]
+        [Route("csapatok/{id}")]
+        public void Delete(int id)
+        {
+            Zh3Context context = new Zh3Context();
+            var törlendő = (from x in context.Csapats
+                            where x.CsapatId == id
+                            select x).FirstOrDefault();
+            context.Remove(törlendő);
+            context.SaveChanges();
         }
     }
 }

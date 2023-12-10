@@ -6,9 +6,13 @@
 </head>
 <body>
     <div id="felsorolas"></div>
+    <textarea id="újCsapat"></textarea>
+    <button id="addButton"></button>
+    
     <script>
+        //Adatok kiírása
         fetch("/csapatok/all")
-            .then(response => response.json)
+            .then(response => response.json())
             .then(data => kiírás(data));
 
         function kiírás(lista) {
@@ -19,6 +23,56 @@
                 document.getElementById("felsorolas").appendChild(újElem);
             }
         }
+
+
+
+        //Adatfelvétel
+        document.getElementById("addButton").addEventListener("click", () => {
+            let data = { csapat: document.getElementById("újCsapat").textContent }
+
+            fetch("csapatok/add",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                }).then(x => {
+                    if (x.ok) {
+                        alert("sikeres");
+                    }
+                    else {
+                        alert("kudarc")
+                    }
+                });
+        });
     </script>
+    <style>
+        #felsorolas
+        {
+            height:auto;
+            width:auto;
+            border-radius:10px;
+            border-style:solid;
+            border-color:darkcyan;
+            background-color:lightgrey;
+        }
+        #újCsapat 
+        {
+            height: 50px;
+            width: auto;
+            border-radius: 15px;
+            border-style: solid;
+            border-color:cadetblue;
+            background-color: lightgrey;
+        }
+        #addButton 
+        {
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            border-style: dotted;
+            border-color: black;
+            background-color: darkred;
+        }
+    </style>
 </body>
 </html>

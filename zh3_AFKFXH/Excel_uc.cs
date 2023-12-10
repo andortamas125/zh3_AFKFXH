@@ -111,18 +111,7 @@ namespace zh3_AFKFXH
             Excel.Workbook workbook = excelApp.Workbooks.Add();
             Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[1];
 
-            // Add data to cells of the first worksheet in the new workbook.
-            //worksheet.Cells[1, "A"] = "Data Set";
-            //worksheet.Cells[1, "B"] = "Value";
-            //worksheet.Cells[2, "A"] = "Point 1";
-            //worksheet.Cells[2, "B"] = 10;
-            //worksheet.Cells[3, "A"] = "Point 2";
-            //worksheet.Cells[3, "B"] = 20;
-            //worksheet.Cells[4, "A"] = "Point 3";
-            //worksheet.Cells[4, "B"] = 30;
-            //worksheet.Cells[5, "A"] = "Point 4";
-            //worksheet.Cells[5, "B"] = 40;
-
+        
             var csapatok = from x in context.Csapats
                            select x.Nev;
 
