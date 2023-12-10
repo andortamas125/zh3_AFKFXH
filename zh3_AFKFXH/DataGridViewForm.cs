@@ -58,12 +58,12 @@ namespace zh3_AFKFXH
                         select new Mérkőzés
                         {
                             MeccsId = x.MeccsId,
-                            Csapat1 = x.Csapat1Navigation.Nev, //ez lehet id kéne legyen és comboboxolva kell megjeleníteni mert az úgy pont
+                            Csapat1 = x.Csapat1Navigation.Nev, //ez lehet id kéne legyen és comboboxolva kell megjeleníteni mert az úgy pont, de nem működik :(
                             Csapat2 = x.Csapat2Navigation.Nev,
                             Nezoszam = x.Nezoszam,
                             Bevétel = x.Nezoszam * x.Nap.Jegyar,
                             Eredmeny = x.Eredmeny,
-                            Nap = x.NapId
+                            Nap = x.Nap.Nev
                         };
 
             mérkőzésBindingSource.DataSource = meccs.ToList();
@@ -94,7 +94,7 @@ namespace zh3_AFKFXH
             if (!CheckNéző(nézőTextBox.Text) && CheckEredmény(eredményTextBox.Text))
             {
                 DialogResult result = MessageBox.Show("Biztosan hozzáadja ezt az adatot?", "Adat felvétel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
                 if (result == DialogResult.Yes)
                 {
                     Mecc új = new Mecc();
@@ -103,9 +103,8 @@ namespace zh3_AFKFXH
                     új.Csapat2 = ((Csapat)listBox2.SelectedItem).CsapatId;
                     új.Nezoszam = Int32.Parse(nézőTextBox.Text);
                     új.Eredmeny = eredményTextBox.Text;
-
-                    új.Nap = null;
-                    új.Stadion = null;
+                    //új.NapId =null;
+                    //új.Stadion = null;
 
 
                     context.Meccs.Add(új);
@@ -126,7 +125,8 @@ namespace zh3_AFKFXH
         private void TörlésButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Biztosan kitörlöd a kiválasztott elemet?", "Elem törlés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) { 
+            if (result == DialogResult.Yes)
+            {
 
                 var ID = ((Mérkőzés)mérkőzésBindingSource.Current).MeccsId;
 
@@ -165,7 +165,7 @@ namespace zh3_AFKFXH
             {
                 e.Cancel = true;
                 errorProvider1.SetError(nézőTextBox, "Töltse ki a nézők számát!");
-            } 
+            }
         }
 
         private void nézőTextBox_Validated(object sender, EventArgs e)
@@ -186,5 +186,6 @@ namespace zh3_AFKFXH
         {
             errorProvider1.SetError(eredményTextBox, "");
         }
+
     }
 }

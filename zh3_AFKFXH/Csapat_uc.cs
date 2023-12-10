@@ -23,6 +23,7 @@ namespace zh3_AFKFXH
 
         }
 
+        //Szűrés
         private void StadionokTextBox_TextChanged(object sender, EventArgs e)
         {
             Stadionok();
@@ -37,12 +38,18 @@ namespace zh3_AFKFXH
             CsapatListBox.DataSource = stadionok.ToList();
         }
 
+        //Kiválasztott stadionról infok
         private void StadionokListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Stadinfo();
+        }
+
+        private void Stadinfo()
         {
             var valasztott = ((Csapat)CsapatListBox.SelectedItem).CsapatId;
             var csapat = (from x in context.Csapats
-                         where x.CsapatId == valasztott
-                         select x).FirstOrDefault();
+                          where x.CsapatId == valasztott
+                          select x).FirstOrDefault();
             edzőTextBox.Text = csapat.EdzoNev;
             alakulásTextBox.Text = csapat.AlakulasiEv.ToString();
         }

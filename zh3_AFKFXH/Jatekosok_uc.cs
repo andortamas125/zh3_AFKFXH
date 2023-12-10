@@ -22,6 +22,7 @@ namespace zh3_AFKFXH
             JatekosokListBox.DisplayMember = "nev";
         }
 
+        //Listboxban kiválasztott játékos infoi
         private void JatekosokListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Infok();
@@ -46,6 +47,8 @@ namespace zh3_AFKFXH
             posztTextBox.Text = poszt.ToString();
         }
 
+
+        //Listbox szűrése
         private void JatekosokTextBox_TextChanged(object sender, EventArgs e)
         {
             Játékosok();

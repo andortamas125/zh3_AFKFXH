@@ -17,7 +17,7 @@ namespace zh3_AFKFXH
 
             if (result == DialogResult.No)
             {
-                // Kilépés
+                // Kilépés megszakítása
                 e.Cancel = true;
             }
         }

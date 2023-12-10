@@ -19,6 +19,6 @@ namespace zh3_AFKFXH
 
         public string Eredmeny { get; set; } = null!;
 
-        public int? Nap { get; set; }
+        public string? Nap { get; set; }
     }
 }

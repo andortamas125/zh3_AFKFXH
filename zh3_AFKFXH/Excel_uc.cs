@@ -41,7 +41,7 @@ namespace zh3_AFKFXH
                 xlSheet = xlWB.ActiveSheet;
 
                 // Tábla létrehozása
-                TáblaKészítés(); // Ennek megírása a következő feladatrészben következik
+                TáblaKészítés();
 
                 // Control átadása a felhasználónak
                 xlApp.Visible = true;
@@ -93,8 +93,8 @@ namespace zh3_AFKFXH
 
             Excel.Range adatRange = xlSheet.get_Range("A2", Type.Missing).get_Resize(sorokSzáma, oszlopokSzáma);
             adatRange.Value2 = adatTömb;
+            adatRange.Columns.AutoFit();
 
-            //adatRange.Columns.AutoFit();
             Excel.Range fejlécRange = xlSheet.get_Range("A1", Type.Missing).get_Resize(1, 6);
             fejlécRange.Font.Bold = true;
             //fejlécRange.Columns.AutoFit();
@@ -103,11 +103,9 @@ namespace zh3_AFKFXH
 
         private void diagramButton_Click(object sender, EventArgs e)
         {
-            // Start Excel and get Application object.
             var excelApp = new Excel.Application();
             excelApp.Visible = true;
 
-            // Create a new, empty workbook and add a worksheet.
             Excel.Workbook workbook = excelApp.Workbooks.Add();
             Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[1];
 
@@ -126,25 +124,25 @@ namespace zh3_AFKFXH
                 worksheet.Cells[i + 2, "B"] = alapítások.ToList()[i];
             }
 
-            // Create a range for the data.
+            //Adatok kijelölése
             Excel.Range chartRange = worksheet.get_Range("A1", "B9");
 
-            // Add a chart to the worksheet.
+
             Excel.ChartObjects xlCharts = (Excel.ChartObjects)worksheet.ChartObjects(Type.Missing);
             Excel.ChartObject myChart = xlCharts.Add(10, 150, 300, 250);
             Excel.Chart chartPage = myChart.Chart;
 
-            // Set chart range.
+            //Forrás megadása
             chartPage.SetSourceData(chartRange);
 
-            // Set chart properties.
+            // Diagram beállítások
             chartPage.ChartType = Excel.XlChartType.xlLine;
             chartPage.ChartWizard(Source: chartRange,
-                Title: "Example Chart",
-                CategoryTitle: "Data Set",
-                ValueTitle: "Value");
+                Title: "Csapatok alapításai",
+                CategoryTitle: "Csapatok",
+                ValueTitle: "Évek");
 
-            // Save the workbook and quit Excel.
+            // Mentés és kilépés
             //workbook.SaveAs(@"C:\YourPath\ExcelChartExample.xlsx");
             //excelApp.Quit();
         }
