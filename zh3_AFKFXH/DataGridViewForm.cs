@@ -44,15 +44,19 @@ namespace zh3_AFKFXH
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Meccs();
+            if (listBox2.SelectedItem!=null)
+            {
+                Meccs();
+            }
+            
         }
 
 
         //DataGridView adatfeltöltés
         private void Meccs()
         {
-            var csapat1 = listBox1.SelectedIndex + 1;
-            var csapat2 = listBox2.SelectedIndex + 1;
+            var csapat1 = ((Csapat)listBox1.SelectedItem).CsapatId;
+            var csapat2 = ((Csapat)listBox2.SelectedItem).CsapatId;
             var meccs = from x in context.Meccs
                         where x.Csapat1Navigation.CsapatId == csapat1 & x.Csapat2Navigation.CsapatId == csapat2
                         select new Mérkőzés
@@ -98,7 +102,7 @@ namespace zh3_AFKFXH
                 if (result == DialogResult.Yes)
                 {
                     Mecc új = new Mecc();
-                    új.MeccsId = context.Meccs.Count(); // Mert alapból 0-től kezdte így a már meglévőkkel ütközött a PK
+                    új.MeccsId = context.Meccs.Count()+1; // Mert alapból 0-től kezdte így a már meglévőkkel ütközött a PK
                     új.Csapat1 = ((Csapat)listBox1.SelectedItem).CsapatId;
                     új.Csapat2 = ((Csapat)listBox2.SelectedItem).CsapatId;
                     új.Nezoszam = Int32.Parse(nézőTextBox.Text);
